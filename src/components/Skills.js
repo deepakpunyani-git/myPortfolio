@@ -1,15 +1,25 @@
 import React from 'react';
 
-const SkillsSection = () => {
+const Skills = ({ data }) => {
   return (
-    <section className="resume-section p-3 p-lg-5 d-flex flex-column" id="skills">
-      <div className="my-auto">
+    <section className="resume-section" id="skills">
+      <div className="resume-section-content">
         <h2 className="mb-5">Skills</h2>
-
-        {/* Add your skills content here */}
+        {data.map((skill, index) => (
+          <div key={index} className="mb-3">
+            <h3>{skill.title}</h3>
+            <ul className="list-inline">
+              {skill.skillNames.map((skillName, idx) => (
+                <li key={idx} className="list-inline-item">
+                  {skillName}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </div>
     </section>
   );
 };
 
-export default SkillsSection;
+export default Skills;
