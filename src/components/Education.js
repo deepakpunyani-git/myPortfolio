@@ -2,8 +2,8 @@ import React from 'react';
 
 const Education = ({ data }) => {
   return (
-    <section className="resume-section" id="education">
-      <div className="resume-section-content">
+    <section className="resume-section p-3 p-lg-5 d-flex flex-column" id="education">
+      <div className="resume-section-content my-auto">
         <h2 className="mb-5">Education</h2>
         {data.map((education, index) => (
           <div key={index} className="d-flex flex-column flex-md-row justify-content-between mb-5">

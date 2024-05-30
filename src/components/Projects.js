@@ -2,8 +2,8 @@ import React from 'react';
 
 const Projects = ({ data }) => {
   return (
-    <section className="resume-section" id="projects">
-      <div className="resume-section-content">
+    <section className="resume-section p-3 p-lg-5 d-flex flex-column" id="projects">
+      <div className="resume-section-content my-auto">
         <h2 className="mb-5">Projects</h2>
         {data.map((project, index) => (
           <div key={index} className="mb-3">
@@ -24,7 +24,7 @@ const Projects = ({ data }) => {
                 </a>
               </p>
             )}
-            <p>{project.details}</p>
+            <p dangerouslySetInnerHTML={{ __html: project.details }}></p>
           </div>
         ))}
       </div>

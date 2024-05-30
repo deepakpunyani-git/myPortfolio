@@ -101,91 +101,68 @@ const ContactForm = () => {
     <section className="resume-section" id="contactus">
       <div className="resume-section-content">
         <h2 className="mb-5 text-center">Get In touch</h2>
-        <div className="row">
-          <div className="col-lg-6 offset-lg-3">
-            <form onSubmit={handleSubmit} className="contact-form">
-              <div className="form-group">
-                <input
-                  type="text"
-                  id="fullName"
-                  name="fullName"
-                  className={`form-control ${errors.fullName ? 'is-invalid' : ''}`}
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  placeholder="Enter Your Name"
-                />
-                {errors.fullName && <div className="invalid-feedback">{errors.fullName}</div>}
-              </div>
-              <div className="form-group">
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className={`form-control ${errors.email ? 'is-invalid' : ''}`}
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="Enter Your Email"
-                />
-                {errors.email && <div className="invalid-feedback">{errors.email}</div>}
-              </div>
-              <div className="form-group">
-                <input
-                  type="text"
-                  id="phone"
-                  name="phone"
-                  className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="Enter Your Phone Number (xxx-xxx-xxxx)"
-                />
-                {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
-              </div>
-              <div className="form-group">
-                <textarea
-                  id="message"
-                  name="message"
-                  className={`form-control ${errors.message ? 'is-invalid' : ''}`}
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows="5"
-                  placeholder="Type your message here."
-                ></textarea>
-                {errors.message && <div className="invalid-feedback">{errors.message}</div>}
-              </div>
-              <button type="submit" className="btn btn-primary w-100">Send Message</button>
-            </form>
+        {isSubmitted ? (
+          <div className="text-center">
+            <p>Thank you for reaching out. Your message has been successfully sent.</p>
           </div>
-        </div>
-      </div>
-
-      {/* Bootstrap Modal */}
-      <div className="modal fade" id="successModal" tabIndex="-1" role="dialog" aria-labelledby="successModalLabel" aria-hidden="true">
-        <div className="modal-dialog" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="successModalLabel">Message Sent</h5>
-              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="modal-body">
-              Thank you for reaching out. Your message has been successfully sent.
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+        ) : (
+          <div className="row">
+            <div className="col-lg-6 offset-lg-3">
+              <form onSubmit={handleSubmit} className="contact-form">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    className={`form-control ${errors.fullName ? 'is-invalid' : ''}`}
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    placeholder="Enter Your Name"
+                  />
+                  {errors.fullName && <div className="invalid-feedback">{errors.fullName}</div>}
+                </div>
+                <div className="form-group">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    className={`form-control ${errors.email ? 'is-invalid' : ''}`}
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="Enter Your Email"
+                  />
+                  {errors.email && <div className="invalid-feedback">{errors.email}</div>}
+                </div>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    className={`form-control ${errors.phone ? 'is-invalid' : ''}`}
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="Enter Your Phone Number (xxx-xxx-xxxx)"
+                  />
+                  {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
+                </div>
+                <div className="form-group">
+                  <textarea
+                    id="message"
+                    name="message"
+                    className={`form-control ${errors.message ? 'is-invalid' : ''}`}
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows="5"
+                    placeholder="Type your message here."
+                  ></textarea>
+                  {errors.message && <div className="invalid-feedback">{errors.message}</div>}
+                </div>
+                <button type="submit" className="btn btn-primary w-100">Send Message</button>
+              </form>
             </div>
           </div>
-        </div>
+        )}
       </div>
-
-      {/* Trigger Modal Script */}
-      {isSubmitted && (
-        <script>
-          {`$(document).ready(function() {
-            $('#successModal').modal('show');
-          });`}
-        </script>
-      )}
     </section>
   );
 };

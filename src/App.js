@@ -9,8 +9,17 @@ import Awards from './components/Awards';
 import Projects from './components/Projects';
 import ContactForm from './components/ContactForm';
 
+const Loader = () => {
+  return (
+    <div className="loader-container">
+      <div className="loader"></div>
+    </div>
+  );
+};
+
 const App = () => {
   const baseUrl = process.env.REACT_APP_BASE_URL;
+  const [loading, setLoading] = useState(true);
   const [AboutMeData, setAboutMeData] = useState({ about: {}, links: [] });
   const [ExperienceData, setExperienceData] = useState([]);
   const [EducationData, setEducationData] = useState([]);
@@ -36,6 +45,8 @@ const App = () => {
 
       } catch (error) {
         console.error('Error fetching data:', error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -44,16 +55,23 @@ const App = () => {
 
   return (
     <div>
+
+      {loading ? (
+        <Loader />
+      ) : (
+        <>
       <Sidebar data={AboutMeData.about} />
-      <div className="container-fluid p-0">
-        <AboutMe data={AboutMeData.about} links={AboutMeData.links} />
-        <Experience data={ExperienceData} />
-        <Education data={EducationData} />
-        <Skills data={SkillsData} />
-        <Projects data={ProjectsData} />
-        <Awards data={AwardsData} />
-        <ContactForm/>
-      </div>
+          <div className="container-fluid p-0">
+            <AboutMe data={AboutMeData.about} links={AboutMeData.links} />
+            <Experience data={ExperienceData} />
+            <Education data={EducationData} />
+            <Skills data={SkillsData} />
+            <Projects data={ProjectsData} />
+            <Awards data={AwardsData} />
+            <ContactForm />
+          </div>
+        </>
+      )}
     </div>
   );
 };
