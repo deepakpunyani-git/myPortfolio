@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 
 const Sidebar = (props) => {
-  const baseUrl = process.env.REACT_APP_BASE_URL;
-
   const [isNavCollapsed, setIsNavCollapsed] = useState(true);
 
   const handleNavCollapse = () => {
@@ -12,9 +10,8 @@ const Sidebar = (props) => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary fixed-top" id="sideNav">
       <a className="navbar-brand js-scroll-trigger" href="#page-top">
-        <span className="d-block d-lg-none">Start Bootstrap</span>
         <span className="d-none d-lg-block">
-          <img className="img-fluid img-profile rounded-circle mx-auto mb-2" src={baseUrl + 'images/' + props.data.image} alt="" />
+          <img className="img-fluid img-profile rounded-circle mx-auto mb-2" src={process.env.PUBLIC_URL + '/myImage.jpg'} alt="" />
         </span>
       </a>
       <button

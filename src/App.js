@@ -31,8 +31,8 @@ const App = () => {
         setEducationData(data.education);
         setExperienceData(data.experience);
         setSkillsData(data.skills);
-        setAwardsData(data.awards);
         setProjectsData(data.projects);
+        setAwardsData(data.awards);
 
       } catch (error) {
         console.error('Error fetching data:', error.message);
@@ -50,8 +50,8 @@ const App = () => {
         <Experience data={ExperienceData} />
         <Education data={EducationData} />
         <Skills data={SkillsData} />
-        <Awards data={AwardsData} />
         <Projects data={ProjectsData} />
+        <Awards data={AwardsData} />
         <ContactForm/>
       </div>
     </div>

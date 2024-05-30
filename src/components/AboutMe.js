@@ -12,6 +12,8 @@ const AboutMe = ({ data, links }) => {
         return 'fa fa-twitter';
       case 'facebook':
         return 'fa fa-facebook-f';
+      case 'resume':
+          return 'fa fa-file-text';
       default:
         return '';
     }
@@ -27,9 +29,17 @@ const AboutMe = ({ data, links }) => {
         <p className="mb-5">{data.details}</p>
         <div className="social-icons">
           {links.map((link, index) => (
-            <a key={index} className="social-icon" href={link.link} target="_blank" rel="noopener noreferrer">
-              <i className={getIconClass(link.icon)}></i>
-            </a>
+              <a 
+                key={index} 
+                className="social-icon" 
+                href={link.link} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                alt={link.alt}
+                // {...(link.download && { download: true })}
+              >
+                <i className={getIconClass(link.icon)}></i>
+              </a>
           ))}
         </div>
       </div>
