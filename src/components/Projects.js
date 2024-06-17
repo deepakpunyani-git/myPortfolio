@@ -8,6 +8,8 @@ const Projects = ({ data }) => {
         {data.map((project, index) => (
           <div key={index} className="mb-3">
             <h3>{project.title}</h3>
+            <p dangerouslySetInnerHTML={{ __html: project.details }}></p>
+
             {project.link && (
               <p>
                 <strong>Project Link:</strong>{' '}
@@ -24,7 +26,6 @@ const Projects = ({ data }) => {
                 </a>
               </p>
             )}
-            <p dangerouslySetInnerHTML={{ __html: project.details }}></p>
           </div>
         ))}
       </div>
